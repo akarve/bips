@@ -435,8 +435,9 @@ Each <code>identity</code> is an independent, unlinkable Nostr key namespace, an
 Identity index <code>0'</code> and account index <code>0'</code> are reserved for future
 key-management use, such as proof-of-linkage between an identity's keys, key rotation, and
 revocation. Their semantics are out of scope for this BIP and may be specified by a future
-NIP. Usable signing keys therefore start at <code>identity >= 1'</code> and
-<code>account_index >= 1'</code>.
+NIP. Implementations should throw an error if a reserved index is provided as input.
+Usable signing keys therefore start at <code>identity >= 1'</code> and
+<code>account_index >= 1'</code>. 
 
 The standard application of BIP-85 produces 64 bytes of entropy. Take the first 32 bytes
 (the 256 most significant bits)<ref name="curve-order" /> as the secp256k1 secret key,
